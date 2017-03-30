@@ -3,11 +3,105 @@
 <head>
 	<title></title>
 </head>
+<style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .scroller * {
+        transition-duration: 0.8s; /* ie 10 */
+        -moz-transition: 0.8s; /* Firefox 4 */
+        -webkit-transition: 0.8s; /* Safari and Chrome */
+        -o-transition: 0.8s; /* Opera */
+    }
+
+    .scroller > .content_background {
+        width: 100%;
+        height: 537px;
+        overflow: hidden;
+
+        background-image: url("./images/content_background.png");
+    }
+
+    .scroller .content {
+        color: #fff;
+        width: 259px;
+        height: 362px;
+        margin: 90px 225px 32px 540px;
+    }
+
+    .scroller_pic1 {
+        background-image: url("./images/p-1.jpg");
+    }
+
+    .scroller_pic2 {
+        background-image: url("./images/p-2.jpg");
+    }
+
+    .scroller_pic3 {
+        background-image: url("./images/p-3.jpg");
+    }
+
+    .scroller_pic4 {
+        background-image: url("./images/p-4.jpg");
+    }
+</style>
+
 <body style="height: 10000px;">
 
-<div id="main" style="margin-top: 1000px; height: 537px; background-image: url('./background-1.jpg');">
+<div class="scroller scroller_pic1">
+  <div class="content_background">
+    <div class="content">
+        <h1>
+          some
+        </h1>
+        <p>
+          something
+        </p>
+    </div>
+  </div>
+</div>
 
-<div>
+<div class="scroller scroller_pic2">
+  <div class="content_background">
+    <div class="content">
+        <h1>
+          some
+        </h1>
+        <p>
+          something
+        </p>
+    </div>
+  </div>
+</div>
+
+<div class="scroller scroller_pic3">
+  <div class="content_background">
+    <div class="content">
+        <h1>
+          some
+        </h1>
+        <p>
+          something
+        </p>
+    </div>
+  </div>
+</div>
+
+<div class="scroller scroller_pic4">
+  <div class="content_background">
+    <div class="content">
+        <h1>
+          some
+        </h1>
+        <p>
+          something
+        </p>
+    </div>
+  </div>
+</div>
+
 
 <script type="text/javascript">
     window.scroller = function (window, document, execute_dom, max_scroll_px, side) {
@@ -68,10 +162,19 @@
         };
     };
 
-    var pic1 = new window.scroller(window, document, document.getElementById("main"), 2600, false);
+    var scrollers = [0, 1, 2, 3];
+    var scroll_doms = document.getElementsByClassName("scroller");
+
+    scrollers[0] = new window.scroller(window, document, scroll_doms[0], 2600, false);
+    scrollers[1] = new window.scroller(window, document, scroll_doms[1], 2600, true);
+    scrollers[2] = new window.scroller(window, document, scroll_doms[2], 2600, false);
+    scrollers[3] = new window.scroller(window, document, scroll_doms[3], 2600, true);
 
     setInterval(function(){
-        pic1.flush_all();
+        (scrollers[0]).flush_all();
+        (scrollers[1]).flush_all();
+        (scrollers[2]).flush_all();
+        (scrollers[3]).flush_all();
     }, 100);
 </script>
 </body>
